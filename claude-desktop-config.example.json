@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "squidler": {
+      "transport": "http",
+      "url": "https://mcp.squidler.io",
+      "headers": {
+        "Authorization": "Bearer YOUR_SQUIDLER_API_TOKEN"
+      }
+    }
+  }
+}
