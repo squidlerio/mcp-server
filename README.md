@@ -87,12 +87,13 @@ Over time this builds a growing catalog of tests organized by feature that preve
 
 ### Test Runs
 
-| Tool               | Description                                   |
-| ------------------ | --------------------------------------------- |
-| `test_runs_list`   | List execution history for a test case        |
-| `test_run_outcome` | Get pass/fail outcome for a test run          |
-| `test_run_events`  | Get detailed execution events and screenshots |
-| `test_run_stop`    | Stop a currently running test                 |
+| Tool               | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| `test_runs_list`   | List execution history for a test case                   |
+| `test_case_poll`   | Long-poll for test execution status updates and events   |
+| `test_run_outcome` | Get pass/fail outcome and goal results for a test run    |
+| `test_run_events`  | Get detailed execution events and screenshots            |
+| `test_run_stop`    | Stop a currently running test                            |
 
 ### Labels
 
