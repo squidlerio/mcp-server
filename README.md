@@ -2,9 +2,9 @@
 
 ## Squidler.io
 
-AI coding agents excel at the **Build** phase of a web app, but struggle with the **Verify** phase. Squidler is designed to validate your web app as a human based on natural language use cases, and without write brittle, DOM-dependent tests.
+AI coding agents excel at the **Build** phase of a web app, but struggle with the **Verify** phase. Squidler is designed to validate your web app as a human based on natural language use cases, and without writing brittle, DOM-dependent tests.
 
-Squidler is not just a testing tool; it enabled your coding agent to analyze its own work from a user perspective, decoupled from the implementation. Squidler closes the autonomous **Build → Verify → Fix** loop, and enabled you to act as the true human-in-the-loop who manages the outcome rather than the output.
+Squidler is not just a testing tool; it enables your coding agent to analyze its own work from a user perspective, decoupled from the implementation. Squidler closes the autonomous **Build → Verify → Fix** loop, and enables you to act as the true human-in-the-loop who manages the outcome rather than the output.
 
 ### Squidler MCP Server
 
@@ -31,6 +31,18 @@ Add to your MCP client configuration:
 ```
 
 Get your API token from [squidler.io/integrations/api-keys](https://squidler.io/integrations/api-keys).
+
+## Built-in Agent Guidance
+
+The MCP server includes built-in instructions that teach your AI agent a **Test-After-Feature Workflow**. When connected, the agent automatically knows how to use Squidler without you having to explain it. The workflow it follows:
+
+1. **Run existing tests** — verify nothing is broken by the new feature.
+2. **Investigate failures** — use test run outcomes and events to understand what failed. Fix the code if it's a bug, or update/delete the test if it's obsolete.
+3. **Label the feature** — create a label for the completed feature (e.g., "User Login", "Checkout Flow") to organize your test catalog.
+4. **Cover the new feature** — create test cases for the new behavior, tag them with the feature label, and run them to confirm they pass.
+5. **Confirm green** — re-run until all tests pass, then move on to the next feature.
+
+Over time this builds a growing catalog of tests organized by feature that prevents regressions and documents how the system is meant to work.
 
 ## Resources
 
@@ -80,6 +92,7 @@ Get your API token from [squidler.io/integrations/api-keys](https://squidler.io/
 | `test_runs_list`   | List execution history for a test case        |
 | `test_run_outcome` | Get pass/fail outcome for a test run          |
 | `test_run_events`  | Get detailed execution events and screenshots |
+| `test_run_stop`    | Stop a currently running test                 |
 
 ### Labels
 
@@ -103,9 +116,25 @@ Get your API token from [squidler.io/integrations/api-keys](https://squidler.io/
 
 ### Credentials
 
-| Tool               | Description                      |
-| ------------------ | -------------------------------- |
-| `credentials_list` | List available login credentials |
+| Tool                      | Description                                                 |
+| ------------------------- | ----------------------------------------------------------- |
+| `credentials_list`        | List available login credentials                            |
+| `credentials_create`      | Create username/password credentials for site authentication |
+| `credentials_create_oidc` | Create OIDC credentials for sites using OpenID Connect      |
+
+## Prompts
+
+| Prompt                             | Description                                                              |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| `create-test-case`                 | Guided test case creation with goals, steps, and failure strategies      |
+| `site-health-check`               | Quick overview of site quality status with actionable recommendations    |
+| `run-test-suite`                   | Run all or labeled tests and monitor results                             |
+| `get-started-with-squidler`       | Complete onboarding: create site, generate initial tests, run them       |
+| `suggest-initial-tests`           | Analyze codebase to suggest 2-4 initial test cases                       |
+| `enhance-tests-from-runs`         | Analyze test run events to identify and fix test weaknesses              |
+| `identify-ux-improvements`        | Discover usability issues from AI tester friction patterns               |
+| `correlate-accessibility-and-ux`  | Cross-reference accessibility problems with test execution friction      |
+| `migrate-legacy-tests`            | Migrate V1 legacy test cases to V2 format                               |
 
 ## Example Prompts
 
