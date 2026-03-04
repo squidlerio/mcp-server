@@ -135,7 +135,7 @@ Over time this builds a growing catalog of tests organized by feature that preve
 | `enhance-tests-from-runs`         | Analyze test run events to identify and fix test weaknesses              |
 | `identify-ux-improvements`        | Discover usability issues from AI tester friction patterns               |
 | `correlate-accessibility-and-ux`  | Cross-reference accessibility problems with test execution friction      |
-| `migrate-legacy-tests`            | Migrate V1 legacy test cases to V2 format                               |
+| `migrate-legacy-tests`            | Migrate legacy test cases to current format                              |
 
 ## Example Prompts
 
