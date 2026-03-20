@@ -74,17 +74,18 @@ Over time this builds a growing catalog of tests organized by feature that preve
 
 ### Test Cases
 
-| Tool                       | Description                           |
-| -------------------------- | ------------------------------------- |
-| `test_cases_list`          | List all test cases                   |
-| `test_case_get`            | Get test case details                 |
-| `test_cases_list_by_label` | List test cases with a specific label |
-| `test_case_create`         | Create a new test case                |
-| `test_case_update`         | Update an existing test case          |
-| `test_case_delete`         | Delete a test case                    |
-| `test_case_run`            | Run a single test case                |
-| `test_cases_run_all`       | Run all test cases                    |
-| `test_cases_run_by_label`  | Run test cases with a specific label  |
+| Tool                       | Description                                                        |
+| -------------------------- | ------------------------------------------------------------------ |
+| `test_cases_list`          | List all test cases                                                |
+| `test_case_get`            | Get test case details                                              |
+| `test_cases_list_by_label` | List test cases with a specific label                              |
+| `validate_test_case`       | Validate a test case for quality, feasibility, and best practices  |
+| `test_case_create`         | Create a new test case (includes automatic validation feedback)    |
+| `test_case_update`         | Update an existing test case (includes automatic validation feedback) |
+| `test_case_delete`         | Delete a test case                                                 |
+| `test_case_run`            | Run a single test case                                             |
+| `test_cases_run_all`       | Run all test cases                                                 |
+| `test_cases_run_by_label`  | Run test cases with a specific label                               |
 
 ### Test Runs
 
@@ -118,12 +119,29 @@ Over time this builds a growing catalog of tests organized by feature that preve
 
 ### Credentials
 
-| Tool                      | Description                                                 |
-| ------------------------- | ----------------------------------------------------------- |
-| `credentials_list`             | List available login credentials                                          |
-| `credentials_create_userpass`  | Create credentials with explicit email/username and password              |
-| `credentials_create_email`     | Create credentials with auto-generated @squidlermail.io email for verification testing |
-| `credentials_create_oidc`      | Create OIDC credentials for sites using OpenID Connect                    |
+| Tool                         | Description                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------------- |
+| `credentials_list`           | List available login credentials                                                       |
+| `credentials_create_userpass`| Create credentials with explicit email/username and password                           |
+| `credentials_create_email`   | Create credentials with auto-generated @squidlermail.io email for verification testing |
+| `credentials_create_oidc`    | Create OIDC credentials for sites using OpenID Connect                                 |
+
+### Persona Reviews (UX Feedback)
+
+| Tool                       | Description                                                              |
+| -------------------------- | ------------------------------------------------------------------------ |
+| `personas_list`            | List all available personas for UX reviews                               |
+| `persona_review_run`       | Run a persona review on a validated test case                            |
+| `persona_review_findings`  | Get detailed findings from a completed persona review                    |
+| `persona_findings_list`    | List persona findings for a site and persona, filtered by status         |
+| `persona_finding_triage`   | Update finding status (RESOLVED, DISMISSED, IN_PROGRESS, OPEN)          |
+
+### Account Management
+
+| Tool                  | Description                                                    |
+| --------------------- | -------------------------------------------------------------- |
+| `account_status`      | Check current plan, remaining test quota, and available upgrades |
+| `account_upgrade_url` | Generate a short-lived URL to upgrade your plan                |
 
 ## Prompts
 
@@ -137,6 +155,7 @@ Over time this builds a growing catalog of tests organized by feature that preve
 | `enhance-tests-from-runs`         | Analyze test run events to identify and fix test weaknesses              |
 | `identify-ux-improvements`        | Discover usability issues from AI tester friction patterns               |
 | `correlate-accessibility-and-ux`  | Cross-reference accessibility problems with test execution friction      |
+| `run-persona-review`             | Run persona reviews on validated test cases to discover UX issues        |
 | `migrate-legacy-tests`            | Migrate legacy test cases to current format                              |
 
 ## Example Prompts
