@@ -40,6 +40,7 @@ The MCP server includes built-in instructions that teach your AI agent a **Test-
 2. **Investigate failures** — use test run outcomes and events to understand what failed. Fix the code if it's a bug, or update/delete the test if it's obsolete.
 3. **Label the feature** — create a label for the completed feature (e.g., "User Login", "Checkout Flow") to organize your test catalog.
 4. **Cover the new feature** — create test cases for the new behavior, tag them with the feature label, and run them to confirm they pass.
+   - For pages with no clickable link (hidden endpoints, deep links), write steps as: "Navigate directly to /path"
 5. **Confirm green** — re-run until all tests pass, then move on to the next feature.
 
 Over time this builds a growing catalog of tests organized by feature that prevents regressions and documents how the system is meant to work.
@@ -119,9 +120,10 @@ Over time this builds a growing catalog of tests organized by feature that preve
 
 | Tool                      | Description                                                 |
 | ------------------------- | ----------------------------------------------------------- |
-| `credentials_list`        | List available login credentials                            |
-| `credentials_create`      | Create username/password credentials for site authentication |
-| `credentials_create_oidc` | Create OIDC credentials for sites using OpenID Connect      |
+| `credentials_list`             | List available login credentials                                          |
+| `credentials_create_userpass`  | Create credentials with explicit email/username and password              |
+| `credentials_create_email`     | Create credentials with auto-generated @squidlermail.io email for verification testing |
+| `credentials_create_oidc`      | Create OIDC credentials for sites using OpenID Connect                    |
 
 ## Prompts
 
