@@ -39,7 +39,7 @@ The MCP server includes built-in instructions that teach your AI agent a **Test-
 1. **Run existing tests** — verify nothing is broken by the new feature.
 2. **Investigate failures** — use test run outcomes and events to understand what failed. Fix the code if it's a bug, or update/delete the test if it's obsolete.
 3. **Label the feature** — create a label for the completed feature (e.g., "User Login", "Checkout Flow") to organize your test catalog.
-4. **Cover the new feature** — create test cases for the new behavior, tag them with the feature label, and run them to confirm they pass.
+4. **Cover the new feature** — create test cases for the new behavior using the guided conversation (`create_test_conversation`), tag them with the feature label, and run them to confirm they pass.
    - For pages with no clickable link (hidden endpoints, deep links), write steps as: "Navigate directly to /path"
 5. **Confirm green** — re-run until all tests pass, then move on to the next feature.
 
@@ -72,6 +72,14 @@ Over time this builds a growing catalog of tests organized by feature that preve
 | `problem_resolve`  | Mark a problem as resolved                        |
 | `problem_dismiss`  | Mark a problem as false positive                  |
 
+### Test Case Creation
+
+| Tool                          | Description                                                        |
+| ----------------------------- | ------------------------------------------------------------------ |
+| `create_test_conversation`    | **Preferred.** Start a guided conversation to create a high-quality test case. Leverages site page knowledge, existing test coverage, and testing best practices. |
+| `test_conversation_respond`   | Continue a test case creation conversation — answer questions, review the draft, or confirm creation. |
+| `test_case_create`            | Create a test case directly (simple cases only; includes automatic validation feedback) |
+
 ### Test Cases
 
 | Tool                       | Description                                                        |
@@ -80,7 +88,6 @@ Over time this builds a growing catalog of tests organized by feature that preve
 | `test_case_get`            | Get test case details                                              |
 | `test_cases_list_by_label` | List test cases with a specific label                              |
 | `validate_test_case`       | Validate a test case for quality, feasibility, and best practices  |
-| `test_case_create`         | Create a new test case (includes automatic validation feedback)    |
 | `test_case_update`         | Update an existing test case (includes automatic validation feedback) |
 | `test_case_delete`         | Delete a test case                                                 |
 | `test_case_run`            | Run a single test case                                             |
@@ -163,7 +170,7 @@ Over time this builds a growing catalog of tests organized by feature that preve
 | What you can say                                                    | What it does                                                                                               |
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | "Create a site for https://myapp.com called 'My App'"               | Register your website with Squidler to start monitoring and testing                                        |
-| "Analyze the codebase and create test cases for the key user flows" | Analyzes your code to create comprehensive test cases covering happy flows, edge cases, and negative tests |
+| "Analyze the codebase and create test cases for the key user flows" | Uses guided conversations to create comprehensive test cases covering happy flows, edge cases, and negative tests |
 | "Run all my test cases"                                             | Execute your test cases in a real browser with goal validation and issue detection                         |
 | "Show me the results of my latest test runs"                        | See which goals passed or failed, and understand what happened during execution                            |
 | "Get the detailed test events for test case #1 and analyze the UX"  | Review execution logs to identify UX friction and usability issues                                         |
